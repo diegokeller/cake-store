@@ -51,6 +51,7 @@ $routes->scope('/', function (RouteBuilder $builder) {
     $builder->setExtensions(['json', 'xml']);
     $builder->resources('Produto');
     $builder->resources('Produtos');
+    $builder->resources('Pedidos');
 
     // Register scoped middleware for in scopes.
     $builder->registerMiddleware('csrf', new CsrfProtectionMiddleware([

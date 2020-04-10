@@ -40,6 +40,10 @@ class PedidoTable extends Table
         $this->setTable('pedido');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->hasMany('PedidoItem')
+            ->setForeignKey('id_pedido')
+            ->setProperty('itens');
     }
 
     /**

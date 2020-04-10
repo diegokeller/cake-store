@@ -40,6 +40,10 @@ class PedidoItemTable extends Table
         $this->setTable('pedido_item');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
+
+        $this->belongsTo('Pedido')
+            ->setForeignKey('id_pedido')
+            ->setProperty('pedido');
     }
 
     /**
