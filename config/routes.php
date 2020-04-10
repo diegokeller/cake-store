@@ -69,6 +69,10 @@ $routes->scope('/', function (RouteBuilder $builder) {
      */
     $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+    // RESTful
+    $builder->setExtensions(['json', 'xml']);
+    $builder->resources('Produto,Produtos');
+
     /*
      * Connect catchall routes for all controllers.
      *
