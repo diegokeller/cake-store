@@ -23,6 +23,7 @@ use Cake\Http\BaseApplication;
 use Cake\Http\MiddlewareQueue;
 use Cake\Routing\Middleware\AssetMiddleware;
 use Cake\Routing\Middleware\RoutingMiddleware;
+use Cake\Http\Middleware\BodyParserMiddleware;
 
 /**
  * Application setup class.
@@ -74,6 +75,8 @@ class Application extends BaseApplication
             ->add(new AssetMiddleware([
                 'cacheTime' => Configure::read('Asset.cacheTime'),
             ]))
+
+            ->add(new BodyParserMiddleware())
 
             // Add routing middleware.
             // If you have a large number of routes connected, turning on routes

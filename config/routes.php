@@ -46,6 +46,12 @@ use Cake\Routing\RouteBuilder;
 $routes->setRouteClass(DashedRoute::class);
 
 $routes->scope('/', function (RouteBuilder $builder) {
+
+    // RESTful
+    $builder->setExtensions(['json', 'xml']);
+    $builder->resources('Produto');
+    $builder->resources('Produtos');
+
     // Register scoped middleware for in scopes.
     $builder->registerMiddleware('csrf', new CsrfProtectionMiddleware([
         'httpOnly' => true,
@@ -68,10 +74,6 @@ $routes->scope('/', function (RouteBuilder $builder) {
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $builder->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
-
-    // RESTful
-    $builder->setExtensions(['json', 'xml']);
-    $builder->resources('Produto,Produtos');
 
     /*
      * Connect catchall routes for all controllers.
