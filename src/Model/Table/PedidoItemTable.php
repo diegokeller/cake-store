@@ -44,6 +44,12 @@ class PedidoItemTable extends Table
         $this->belongsTo('Pedido')
             ->setForeignKey('id_pedido')
             ->setProperty('pedido');
+
+        $this->hasOne('Produto')
+            ->setForeignKey('id')
+            ->setBindingKey('id_produto')
+            ->setProperty('produto');
+
     }
 
     /**

@@ -12,13 +12,13 @@ class PedidosController extends AppController {
     }
 
     public function index() {
-        $pedidos = $this->Pedido->find()->toList();        
+        $pedidos = $this->Pedido->find()->toList();                
         $this->set(compact('pedidos'));
         $this->viewBuilder()->setOption('serialize', ['pedidos']);
     }
 
     public function view($id) {
-        $pedido = $this->Pedido->get($id, ['contain' => ['PedidoItem']]);
+        $pedido = $this->Pedido->get($id, ['contain' => ['PedidoItem', 'PedidoItem.Produto']]);
         $this->set(compact('pedido'));
         $this->viewBuilder()->setOption('serialize', ['pedido']);
     }
