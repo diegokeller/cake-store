@@ -24,8 +24,10 @@ class PedidosController extends AppController {
     }
 
     public function add() {
-        $this->request->allowMethod(['post']);
-        $pedido = $this->Pedido->newEntity($this->request->getData());
+        $this->request->allowMethod(['post']);   
+        $dados = $this->request->getData();        
+        $dados['data'] = new \DateTime($dados['data']);        
+        $pedido = $this->Pedido->newEntity($dados);        
         $pedido = $this->Pedido->saveOrFail($pedido);
         foreach ($this->request->getData()['itens'] as $item) {
             $item = $this->PedidoItem->newEntity($item);
